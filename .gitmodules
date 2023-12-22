@@ -1,0 +1,3 @@
+[submodule "optitrack_clients"]
+	path = optitrack_clients
+	url = git@github.com:tudelft/UnifiedOptitrackClients
