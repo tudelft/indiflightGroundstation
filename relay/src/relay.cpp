@@ -125,9 +125,9 @@ typedef struct pose_der_s {
 } pose_der_t;
 
 int main(int argc, char** argv) {
-    //const char* serialPort = "/dev/ttyAMA0";
+    const char* serialPort = "/dev/ttyAMA0";
     //int baudrate = B57600;
-    const char* serialPort = "/tmp/ttyS2";
+    //const char* serialPort = "/tmp/ttyS2";
     //int baudrate = B500000; //todo: make commandline argument
     int baudrate = B921600; //todo: make commandline argument
 

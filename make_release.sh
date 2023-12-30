@@ -1,16 +1,17 @@
 #!/bin/bash
 
-mkdir -p build
-rm -rf build/*
+mkdir -p racebian-groundstation
+rm -rf racebian-groundstation/*
 
-cp start.sh build/
-cp README_build.md build/README.md
+cp start.sh racebian-groundstation/
+cp README_build.md racebian-groundstation/README.md
 
-mkdir build/relay
-cp -r relay/build-aarch64-linux-gnu build/relay/
+mkdir racebian-groundstation/relay
+cp -r relay/build-aarch64-linux-gnu racebian-groundstation/relay/
 
-mkdir build/optitrack_clients
-cp -r optitrack_clients/build build/optitrack_clients/
+mkdir racebian-groundstation/optitrack_clients
+cp -r optitrack_clients/build racebian-groundstation/optitrack_clients/
 
-cp -r setpoint_sender build
+cp -r setpoint_sender racebian-groundstation
 
+zip -r racebian-groundstation.zip racebian-groundstation

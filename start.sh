@@ -60,8 +60,8 @@ tmux splitw -h -t "$session:0.0"
 tmux splitw -v -t "$session:0.0"
 tmux splitw -v -t "$session:0.2"
 
-# start uart comms. UPDATE: now assumed that uart-connect.service is NOT running, check README of uart, and comment this if you _do_ have the service running
-tmux send-keys -t $session:0.2 "$ON_PI sudo killall connect\;"
+# start uart comms. UPDATE: now assumed that uart-relay.service is NOT running, check README of uart, and comment this if you _do_ have the service running
+tmux send-keys -t $session:0.2 "$ON_PI sudo killall relay\;"
 tmux send-keys -t $session:0.2 "$ON_PI /home/pi/relay/build-aarch64-linux-gnu/relay" ENTER
 
 # start natnet2udp.py in udp mode

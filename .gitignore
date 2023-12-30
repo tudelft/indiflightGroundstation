@@ -33,3 +33,6 @@
 
 build*/
 !build.xml
+
+racebian-groundstation/
+racebian-groundstation.zip
