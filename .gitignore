@@ -34,5 +34,5 @@
 build*/
 !build.xml
 
-racebian-groundstation/
-racebian-groundstation.zip
+indiflight-groundstation.zip
+logfiles*/

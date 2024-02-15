@@ -1,3 +1,6 @@
 [submodule "optitrack_clients"]
 	path = optitrack_clients
 	url = git@github.com:tudelft/UnifiedOptitrackClients
+[submodule "relay/ext/pi-protocol"]
+	path = relay/ext/pi-protocol
+	url = git@github.com:tblaha/pi-protocol

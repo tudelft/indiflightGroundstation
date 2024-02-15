@@ -1,17 +1,32 @@
 #!/bin/bash
 
-mkdir -p racebian-groundstation
-rm -rf racebian-groundstation/*
+mkdir -p build
+rm -rf build/*
 
-cp start.sh racebian-groundstation/
-cp README_build.md racebian-groundstation/README.md
+# simple programs
+cp start.sh build/
+cp setpointSender.py build
+cp README.md build/README.md
+cp -r log_downloader build/
 
-mkdir racebian-groundstation/relay
-cp -r relay/build-aarch64-linux-gnu racebian-groundstation/relay/
+# relay
+# to build with the pi-cross cross compiler, see Racebian readme
+mkdir build/relay
+rm -rf relay/build-aarch62-linux-gnu
 
-mkdir racebian-groundstation/optitrack_clients
-cp -r optitrack_clients/build racebian-groundstation/optitrack_clients/
+cd relay
+    docker run -v rootfs:/rootfs --mount type=bind,src=./,dst=/package pi-cross --processes=30 --clean-build
+cd ..
 
-cp -r setpoint_sender racebian-groundstation
+cp -r relay/build-* build/relay/
 
-zip -r racebian-groundstation.zip racebian-groundstation
+# optitrack clients
+mkdir -p optitrack_clients/build
+rm -rf optitrack_clients/build/*
+cd optitrack_clients/build/
+cmake -D'CLIENTS=udp;console' .. && make
+cd ../..
+cp -r optitrack_clients/build build/optitrack_client/
+
+
+zip -r indiflight-groundstation.zip build

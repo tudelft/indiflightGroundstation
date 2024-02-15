@@ -124,6 +124,8 @@ typedef struct pose_der_s {
     float wz;
 } pose_der_t;
 
+static pi_parse_states_t piParseStates = {0};
+
 int main(int argc, char** argv) {
     const char* serialPort = "/dev/ttyAMA0";
     //int baudrate = B57600;
@@ -167,14 +169,20 @@ int main(int argc, char** argv) {
         // answer, seems like the PL011 buffer is 32byte deep. termios wraps it
         // in a PAGE_SIZE deep buffer (4096bytes), so this is fine at least
         ssize_t numBytes = read(serialPortFd, buffer, PI_MAX_PACKET_LEN);
+        bool newMessage = false;
         if (numBytes) {
             for (int i=0; i < numBytes; i++)
-                piParse(buffer[i]);
+                if (piParse(&piParseStates, buffer[i]) == PI_MSG_IMU_ID)
+                    newMessage = true;
         }
 
-        if (piMsgImuRxState == PI_MSG_RX_STATE_NONE)
+        if ((piMsgImuRxState == PI_MSG_RX_STATE_NONE) || (!newMessage)) {
             // cannot go on, no time information to timestamp gps msgs, or setpoints
+            usleep(500); // sleep 0.5ms, this is bound to miss some gyro messages, but what gives
             continue;
+        }
+
+        newMessage = false;
 
         pose_t pose;
         pose_der_t pose_der;
@@ -187,7 +195,8 @@ int main(int argc, char** argv) {
         memcpy((uint8_t *)(&pose_der), optitrackBuffer+sizeof(unsigned int)+sizeof(pose_t), sizeof(pose_der_t));
 
         if (bytes_received > 0) {
-            pose.timeUs = ntohl(pose.timeUs);
+            //pose.timeUs = __builtin_bswap64(pose.timeUs);
+            //printf("Received optitrack for time %ld at IMU time %d\n", pose.timeUs, piMsgImuRx->time_ms);
             /*
             pose.x = ntohf(pose.x);
             pose.y = ntohf(pose.y);
@@ -233,6 +242,9 @@ int main(int argc, char** argv) {
             piMsgExternalPoseTx.body_qz = pose.qz;
             piSendMsg(&piMsgExternalPoseTx, &serialWriter);
         }
+        //else {
+            //printf("No optitrack bytes received at %ld at IMU time %d\n", pose.timeUs, piMsgImuRx->time_ms);
+        //}
 
         // ---- setpoints ----
         pi_POS_SETPOINT_t msgPosSetpoint;

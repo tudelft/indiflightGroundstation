@@ -16,6 +16,6 @@ Install, enable and run on the pi:
 ```shell
 sudo install -m 644 /home/pi/relay/build-aarch64-linux-gnu/relay-connect.service /lib/systemd/system/relay-connect.service
 sudo systemctl daemon-reload
-sudo systemctl enable relay-connect.service
-sudo systemctl start relay-connect.service
+sudo systemctl enable relay.service
+sudo systemctl start relay.service
 ```

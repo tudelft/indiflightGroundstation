@@ -46,4 +46,4 @@ configure_file(${PI_SRC_DIR}/src/pi-protocol.c ${PI_GEN_DIR}/pi-protocol.c COPYO
 #configure_file(${CMAKE_SOURCE_DIR}/src/start.sh ${CMAKE_CURRENT_BINARY_DIR}/start.sh COPYONLY)
 
 # unit file to keep client started at all times, see README
-configure_file(${CMAKE_SOURCE_DIR}/src/relay-connect.service ${CMAKE_CURRENT_BINARY_DIR}/relay-connect.service COPYONLY)
+configure_file(${CMAKE_SOURCE_DIR}/src/relay.service ${CMAKE_CURRENT_BINARY_DIR}/relay.service COPYONLY)
