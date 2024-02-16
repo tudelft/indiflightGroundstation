@@ -34,7 +34,7 @@
 build*/
 !build.xml
 
-indiflight-groundstation.zip
+indiflightGroundstation.zip
 logfiles*/
 
 .vscode*/

@@ -29,4 +29,4 @@ cd ../..
 cp -r optitrack_clients/build build/optitrack_clients/
 
 
-zip -r indiflight-groundstation.zip build
+zip -r indiflightGroundstation.zip build

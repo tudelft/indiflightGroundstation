@@ -16,7 +16,7 @@ Future work:
 
 ## Use the binary packages on Ubuntu 22.04
 
-Download a release from `https://github.com/tblaha/indiflight_groundstation/releases`, extract and open a terminal in the root folder. Then perform the steps below
+Download a release from `https://github.com/tudelft/indiflightGroundstation/releases`, extract and open a terminal in the root folder. Then perform the steps below
 
 ### Setup
 
