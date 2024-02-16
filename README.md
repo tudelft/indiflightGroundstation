@@ -26,7 +26,7 @@ Install prerequisites on your local machine
 
 Push relay program onto the companion computer (must be on the same wifi):
 
-    rsync -rRlp relay/build-aarch64-linux-gnu pi@10.0.01:"/home/pi"
+    rsync -rRlp relay/build-aarch64-linux-gnu pi@10.0.0.1:"/home/pi"
 
 Enable the service to automatically start the relay on boot of the companion computer (optional, otherwise you need to make sure to program is run manually)
 

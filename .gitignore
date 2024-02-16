@@ -36,3 +36,5 @@ build*/
 
 indiflight-groundstation.zip
 logfiles*/
+
+.vscode*/

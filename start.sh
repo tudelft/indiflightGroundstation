@@ -63,11 +63,11 @@ tmux splitw -v -t "$session:0.2"
 # start uart comms. UPDATE: now assumed that relay.service is running, check README
 #tmux send-keys -t $session:0.2 "$ON_PI sudo killall relay\;"
 #tmux send-keys -t $session:0.2 "$ON_PI /home/pi/relay/build-aarch64-linux-gnu/relay" ENTER
-tmux send-keys -t $session:0.2 "$ON_PI sudo systemctl status relay.service"
+tmux send-keys -t $session:0.2 "$ON_PI sudo systemctl status relay.service" ENTER
 
 # start natnet2udp.py in udp mode
 #tmux send-keys -t $session:0.0 "./optitrack_forwarder/build/natnet2udp.py -ac $RB_ID 0 -f 20 -le right -an far -xs right -up z_up -udp $TEST_FLAG" ENTER
-tmux send-keys -t $session:0.0 "./optitrack_clients/build/natnet2udp -s $RB_ID --ac 0 -f 20 -i 10.0.0.1 -p 5005 -c ENU $TEST_FLAG" ENTER
+tmux send-keys -t $session:0.0 "./optitrack_clients/natnet2udp -s $RB_ID --ac 0 -f 20 -i 10.0.0.1 -p 5005 -c ENU $TEST_FLAG" ENTER
 
 # setpoints
 tmux send-keys -t $session:0.1 './setpointSender.py --pos 0 0 1.5 --yaw 0'
