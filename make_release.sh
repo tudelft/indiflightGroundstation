@@ -24,7 +24,7 @@ cp -r relay/build-* build/relay/
 mkdir -p optitrack_clients/build
 rm -rf optitrack_clients/build/*
 cd optitrack_clients/build/
-cmake -D'CLIENTS=udp;console' .. && make
+cmake -D'CLIENTS=udp;console;log' .. && make
 cd ../..
 cp -r optitrack_clients/build build/optitrack_clients/
 
