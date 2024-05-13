@@ -14,7 +14,7 @@ A systemd unit file is provided so systemd can manage that the client is always 
 
 Install, enable and run on the pi:
 ```shell
-sudo install -m 644 /home/pi/relay/build-aarch64-linux-gnu/relay-connect.service /lib/systemd/system/relay-connect.service
+sudo install -m 644 /home/pi/relay/build-aarch64-linux-gnu/relay.service /lib/systemd/system/relay.service
 sudo systemctl daemon-reload
 sudo systemctl enable relay.service
 sudo systemctl start relay.service

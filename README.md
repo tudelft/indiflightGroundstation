@@ -35,7 +35,7 @@ Enable the service to automatically start the relay on boot of the companion com
     pi@10.0.0.1 $  sudo systemctl enable relay.service
     pi@10.0.0.1 $  sudo systemctl start relay.service
 
-Enable the `usb2net` service to access the usb port in serial mode over TCP.
+Enable the `ser2net` service to access the usb port in serial mode over TCP.
 
     pi@10.0.0.1 $  sudo systemctl enable ser2net.service
     pi@10.0.0.1 $  sudo systemctl start ser2net.service
